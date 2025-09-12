@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meow</title>
+</head>
+<body>
+  <h2>Enter Your Name</h2>
+  <input type="text" id="name" placeholder="Type your name here">
+  <input type="role" id="role" placeholder="Type your role here">
+  <button onclick="btnClicked()">Submit</button>
+
+  <!-- <h3 id="output"></h3> -->
+
+  <script>
+    function btnClicked() {
+    const name = document.getElementById("name").value;
+    const role = document.getElementById("role").value;
+    
+    alert(`Button is clicked by ${name} having role ${role}`)
+    }
+  </script>
+</body>
+</html>

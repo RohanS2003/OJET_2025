@@ -1,0 +1,36 @@
+OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+Logs / temp
+*.log
+logs/
+tmp/
+temp/
+
+Env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+Backend (Node)
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/coverage/
+backend/.env
+backend/npm-debug.log*
+backend/yarn-*.log
+
+Oracle JET app
+OJET_Training/node_modules/
+OJET_Training/.ojet/
+OJET_Training/staging/
+OJET_Training/dist/
+OJET_Training/build/
+OJET_Training/hybrid/
+OJET_Training/web/js/libs/
+OJET_Training/web/css/*.map

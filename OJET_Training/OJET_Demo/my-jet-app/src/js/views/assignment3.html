@@ -3,7 +3,7 @@
   <oj-form-layout>
     <oj-input-text
       required="true"
-      value="{{inputValue}}"
+      raw-value="{{inputValue}}"
       label-hint="Required Field">
     </oj-input-text>
     <oj-button disabled="[[!isInputValid()]]" data-bind="click: submitForm">

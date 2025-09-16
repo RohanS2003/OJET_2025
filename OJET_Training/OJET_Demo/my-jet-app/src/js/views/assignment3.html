@@ -1,0 +1,13 @@
+<div>
+  <h2>Form Validation Example</h2>
+  <oj-form-layout>
+    <oj-input-text
+      required="true"
+      value="{{inputValue}}"
+      label-hint="Required Field">
+    </oj-input-text>
+    <oj-button disabled="[[!isInputValid()]]" data-bind="click: submitForm">
+  <span>Submit</span>
+</oj-button>
+  </oj-form-layout>
+</div>

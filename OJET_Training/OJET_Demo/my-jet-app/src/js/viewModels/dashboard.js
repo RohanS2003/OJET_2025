@@ -1,54 +1,39 @@
-/**
- * @license
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-/*
- * Your dashboard ViewModel code goes here
- */
-define(['../accUtils'],
- function(accUtils) {
-    function DashboardViewModel() {
-      // Below are a set of the ViewModel methods invoked by the oj-module component.
-      // Please reference the oj-module jsDoc for additional information.
+define([
+  'knockout',
+  'ojs/ojbootstrap',
+  'ojs/ojknockout',
+  'ojs/ojdrawerlayout',
+  'ojs/ojbutton',
+  'ojs/ojnavigationlist',
+  '../accUtils'
+], function(ko, ojbootstrap, ojknockout, ojdrawerlayout, ojbutton, ojnavigationlist, accUtils) {
+  
+  function DashboardViewModel() {
+    // Drawer state
+    this.startOpened = ko.observable(false);
+    this.startToggle = () => {
+      this.startOpened(!this.startOpened());
+    };
 
-      /**
-       * Optional ViewModel method invoked after the View is inserted into the
-       * document DOM.  The application can put logic that requires the DOM being
-       * attached here.
-       * This method might be called multiple times - after the View is created
-       * and inserted into the DOM and after the View is reconnected
-       * after being disconnected.
-       */
-      this.connected = () => {
-        accUtils.announce('Dashboard page loaded.', 'assertive');
-        document.title = "Dashboard";
-        // Implement further logic if needed
-      };
+    // Lifecycle hook: called when view is inserted into DOM
+    this.connected = () => {
+      accUtils.announce('Dashboard page loaded.', 'assertive');
+      document.title = "Dashboard";
 
-      /**
-       * Optional ViewModel method invoked after the View is disconnected from the DOM.
-       */
-      this.disconnected = () => {
-        // Implement if needed
-      };
+      // Apply Knockout bindings to the drawer layout container
+      ojbootstrap.whenDocumentReady().then(() => {
+        ko.applyBindings(this, document.getElementById('demo-container'));
+      });
+    };
 
-      /**
-       * Optional ViewModel method invoked after transition to the new View is complete.
-       * That includes any possible animation between the old and the new View.
-       */
-      this.transitionCompleted = () => {
-        // Implement if needed
-      };
-    }
+    this.disconnected = () => {
+      // Optional cleanup logic
+    };
 
-    /*
-     * Returns an instance of the ViewModel providing one instance of the ViewModel. If needed,
-     * return a constructor for the ViewModel so that the ViewModel is constructed
-     * each time the view is displayed.
-     */
-    return DashboardViewModel;
+    this.transitionCompleted = () => {
+      // Optional post-transition logic
+    };
   }
-);
+
+  return DashboardViewModel;
+});
